@@ -32,6 +32,8 @@ int main() {
   CT_ASSERT_INT(some_f(3, 2), 5);
   CT_ASSERT_INT(some_f(2, 3), 5);
   CT_ASSERT_INT(some_f(3, 3), 6);
+  CT_ASSERT_CMP(&p2, &p3, compare_point);
+  CT_ASSERT_CMP(&p1, &p3, compare_point);
 
   CT_STAT();
 
