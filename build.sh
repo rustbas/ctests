@@ -2,5 +2,5 @@
 
 set -xe
 
-cc main.c -o res.out
+cc example.c -o res.out
 ./res.out
