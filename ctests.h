@@ -20,6 +20,7 @@
 
 int CT_ASSERT_INT(int a, int b);
 int CT_STAT(void);
+int CT_ASSERT_CMP(void *a, void *b, int (*f)(void *, void *));
 
 #endif
 
@@ -54,9 +55,28 @@ int CT_ASSERT_INT(int a, int b) {
   }
 }
 
+int CT_ASSERT_CMP(void *a, void *b, int (*f)(void *, void *)) {
+  all_counter++;
+  if (f(a, b)) {
+#ifdef CTVERBOSE
+    printf(CTPASS "TEST %d PASSED\n", all_counter);
+#endif
+    passed_counter++;
+    return 1;
+  } else {
+#ifdef CTVERBOSE
+    printf(CTFAIL "TEST %d FAILED"
+                  "\n",
+           all_counter);
+#endif
+    failed_counter++;
+  }
+}
+
 int CT_STAT(void) {
   printf("STAT: ");
   printf("Passed: %d/%d\t", passed_counter, all_counter);
   printf("Failed: %d/%d\n", passed_counter, all_counter);
 }
+
 #endif
