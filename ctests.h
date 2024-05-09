@@ -1,6 +1,11 @@
 #ifndef _CTESTS
 #define _CTESTS
 
+#ifndef STDIO_H
+#define STDIO_H
+#include <stdio.h>
+#endif
+
 #include <stddef.h>
 
 #define RED "\033[0;31m"
