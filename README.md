@@ -1,3 +1,3 @@
 # Description
 
-Single-file header library for testing in C.
+Single-file library for testing for C.
