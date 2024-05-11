@@ -6,6 +6,11 @@
 #include <stdio.h>
 #endif
 
+#ifndef MATH_H
+#define MATH_H
+#include <math.h>
+#endif
+
 #include <stddef.h>
 
 #define RED "\033[0;31m"
@@ -21,6 +26,7 @@
 
 #define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
 #define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
+#define CT_ASSERT_FLT(a, b, c) ct_assert_float((a), (b), (c), verbose)
 #define CT_STAT() ct_stat()
 
 /////////////
@@ -29,6 +35,7 @@
 
 int ct_assert_int(int a, int b, int verbose);
 int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose);
+int ct_assert_float(float a, float b, float eps, int verbose);
 int ct_stat(void);
 
 #endif
@@ -72,6 +79,25 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
     }
     passed_counter++;
     return 1;
+  } else {
+    if (verbose) {
+      printf(CTFAIL "Test %d Failed"
+                    "\n",
+             all_counter);
+    }
+    failed_counter++;
+  }
+}
+
+int ct_assert_float(float a, float b, float eps, int verbose) {
+  all_counter++;
+  if (fabs(a - b) < eps) {
+    if (verbose) {
+      printf(CTPASS "Test %d Passed\n", all_counter);
+    }
+    passed_counter++;
+    return 1;
+
   } else {
     if (verbose) {
       printf(CTFAIL "Test %d Failed"
