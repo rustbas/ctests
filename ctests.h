@@ -47,14 +47,14 @@ int ct_assert_int(int a, int b, int verbose) {
 
   if (a == b) {
     if (verbose) {
-      printf(CTPASS "TEST %d PASSED\n", all_counter);
+      printf(CTPASS "Test %d Passed\n", all_counter);
     }
     passed_counter++;
     all_counter++;
     return 1;
   } else {
     if (verbose) {
-      printf(CTFAIL "TEST %d FAILED: %d != %d"
+      printf(CTFAIL "Test %d Failed: %d != %d"
                     "\n",
              all_counter, a, b);
     }
@@ -67,13 +67,13 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
   all_counter++;
   if (f(a, b)) {
     if (verbose) {
-      printf(CTPASS "TEST %d PASSED\n", all_counter);
+      printf(CTPASS "Test %d Passed\n", all_counter);
     }
     passed_counter++;
     return 1;
   } else {
     if (verbose) {
-      printf(CTFAIL "TEST %d FAILED"
+      printf(CTFAIL "Test %d Failed"
                     "\n",
              all_counter);
     }
