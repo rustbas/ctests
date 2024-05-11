@@ -14,10 +14,10 @@
 
 #define CTLOG "[LOG]: "
 #define CTMSG "[MSG]: "
-#define CTERR "[" RED "ERR" NC "]:"
+#define CTERR "[" RED "ERR" NC "]: "
 
-#define CTFAIL "[" RED "FAIL" NC "]:"
-#define CTPASS "[" GREEN "PASS" NC "]:"
+#define CTFAIL "[" RED "FAIL" NC "]: "
+#define CTPASS "[" GREEN "PASS" NC "]: "
 
 #define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
 #define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
