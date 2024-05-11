@@ -21,6 +21,7 @@
 
 #define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
 #define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
+#define CT_STAT() ct_stat()
 
 /////////////
 // HEADERS //
