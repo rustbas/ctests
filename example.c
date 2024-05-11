@@ -27,6 +27,8 @@ Point p3 = {.x = 2, .y = 1};
 
 int main() {
 
+  int verbose = 1;
+
   CT_ASSERT_INT(some_f(1, 2), 3);
   CT_ASSERT_INT(some_f(2, 2), 3);
   CT_ASSERT_INT(some_f(3, 2), 5);
