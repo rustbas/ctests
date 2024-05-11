@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "ctests.h"
+// #include <math.h>
 
 int some_f(int a, int b) { return a + b; }
 
@@ -36,6 +37,8 @@ int main() {
   CT_ASSERT_INT(some_f(3, 3), 6);
   CT_ASSERT_CMP(&p2, &p3, compare_point);
   CT_ASSERT_CMP(&p1, &p3, compare_point);
+  CT_ASSERT_FLT(1.0, 1.0, 0.1);
+  CT_ASSERT_FLT(2.0, 1.0, 0.1);
 
   CT_STAT();
 
