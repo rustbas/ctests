@@ -13,16 +13,21 @@
 
 #include <stddef.h>
 
+#define CT_BLACK "\033[0;30m"
 #define CT_RED "\033[0;31m"
 #define CT_GREEN "\033[0;32m"
-#define CT_NC "\033[0m"
+#define CT_YELLOW "\033[0;33m"
+#define CT_BLUE "\033[0;34m"
+#define CT_MAGENTA "\033[0;35m"
+#define CT_CYAN "\033[0;36m"
+#define CT_NOCOLOR "\033[0m"
 
-#define CTLOG "[LOG]: "
+#define CTLOG "[" CT_CYAN "LOG" CT_NOCOLOR "]: "
 #define CTMSG "[MSG]: "
-#define CTERR "[" CT_RED "ERR" NC "]: "
+#define CTERR "[" CT_RED "ERR" CT_NOCOLOR "]: "
 
-#define CTFAIL "[" CT_RED "FAIL" NC "]: "
-#define CTPASS "[" CT_GREEN "PASS" NC "]: "
+#define CTFAIL "[" CT_RED "FAIL" CT_NOCOLOR "]: "
+#define CTPASS "[" CT_GREEN "PASS" CT_NOCOLOR "]: "
 
 #define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
 #define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
@@ -109,7 +114,7 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
 }
 
 int ct_stat(void) {
-  printf("STAT: ");
+  printf(CTLOG);
   printf("Passed: %d/%d\t", passed_counter, all_counter);
   printf("Failed: %d/%d\n", passed_counter, all_counter);
 }
