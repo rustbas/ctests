@@ -23,9 +23,9 @@
 // HEADERS //
 /////////////
 
-int CT_ASSERT_INT(int a, int b);
-int CT_STAT(void);
-int CT_ASSERT_CMP(void *a, void *b, int (*f)(void *, void *));
+int ct_assert_int(int a, int b, int verbose);
+int ct_stat(void);
+int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose);
 
 #endif
 
@@ -40,45 +40,45 @@ size_t passed_counter = 0;
 size_t failed_counter = 0;
 size_t skipped_counter = 0;
 
-int CT_ASSERT_INT(int a, int b) {
+int ct_assert_int(int a, int b, int verbose) {
 
   if (a == b) {
-#ifdef CTVERBOSE
-    printf(CTPASS "TEST %d PASSED\n", all_counter);
-#endif
+    if (verbose) {
+      printf(CTPASS "TEST %d PASSED\n", all_counter);
+    }
     passed_counter++;
     all_counter++;
     return 1;
   } else {
-#ifdef CTVERBOSE
-    printf(CTFAIL "TEST %d FAILED: %d != %d"
-                  "\n",
-           all_counter, a, b);
-#endif
+    if (verbose) {
+      printf(CTFAIL "TEST %d FAILED: %d != %d"
+                    "\n",
+             all_counter, a, b);
+    }
     failed_counter++;
     all_counter++;
   }
 }
 
-int CT_ASSERT_CMP(void *a, void *b, int (*f)(void *, void *)) {
+int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
   all_counter++;
   if (f(a, b)) {
-#ifdef CTVERBOSE
-    printf(CTPASS "TEST %d PASSED\n", all_counter);
-#endif
+    if (verbose) {
+      printf(CTPASS "TEST %d PASSED\n", all_counter);
+    }
     passed_counter++;
     return 1;
   } else {
-#ifdef CTVERBOSE
-    printf(CTFAIL "TEST %d FAILED"
-                  "\n",
-           all_counter);
-#endif
+    if (verbose) {
+      printf(CTFAIL "TEST %d FAILED"
+                    "\n",
+             all_counter);
+    }
     failed_counter++;
   }
 }
 
-int CT_STAT(void) {
+int ct_stat(void) {
   printf("STAT: ");
   printf("Passed: %d/%d\t", passed_counter, all_counter);
   printf("Failed: %d/%d\n", passed_counter, all_counter);
