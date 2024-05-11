@@ -19,13 +19,16 @@
 #define CTFAIL "[" RED "FAIL" NC "]:"
 #define CTPASS "[" GREEN "PASS" NC "]:"
 
+#define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
+#define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
+
 /////////////
 // HEADERS //
 /////////////
 
 int ct_assert_int(int a, int b, int verbose);
-int ct_stat(void);
 int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose);
+int ct_stat(void);
 
 #endif
 
