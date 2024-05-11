@@ -13,16 +13,16 @@
 
 #include <stddef.h>
 
-#define RED "\033[0;31m"
-#define GREEN "\033[0;32m"
-#define NC "\033[0m"
+#define CT_RED "\033[0;31m"
+#define CT_GREEN "\033[0;32m"
+#define CT_NC "\033[0m"
 
 #define CTLOG "[LOG]: "
 #define CTMSG "[MSG]: "
-#define CTERR "[" RED "ERR" NC "]: "
+#define CTERR "[" CT_RED "ERR" NC "]: "
 
-#define CTFAIL "[" RED "FAIL" NC "]: "
-#define CTPASS "[" GREEN "PASS" NC "]: "
+#define CTFAIL "[" CT_RED "FAIL" NC "]: "
+#define CTPASS "[" CT_GREEN "PASS" NC "]: "
 
 #define CT_ASSERT_INT(a, b) ct_assert_int((a), (b), verbose)
 #define CT_ASSERT_CMP(a, b, c) ct_assert_cmp((a), (b), (c), verbose)
