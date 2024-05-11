@@ -59,12 +59,12 @@ size_t skipped_counter = 0;
 int ct_assert_int(int a, int b, int verbose) {
 
   if (a == b) {
+    all_counter++;
     if (verbose) {
       printf(CTPASS "Test %d Passed\n", all_counter);
     }
     passed_counter++;
-    all_counter++;
-    return 1;
+    return 0;
   } else {
     if (verbose) {
       printf(CTFAIL "Test %d Failed: %d != %d"
@@ -72,7 +72,7 @@ int ct_assert_int(int a, int b, int verbose) {
              all_counter, a, b);
     }
     failed_counter++;
-    all_counter++;
+    return 1;
   }
 }
 
@@ -83,7 +83,7 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
       printf(CTPASS "Test %d Passed\n", all_counter);
     }
     passed_counter++;
-    return 1;
+    return 0;
   } else {
     if (verbose) {
       printf(CTFAIL "Test %d Failed"
@@ -91,6 +91,7 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
              all_counter);
     }
     failed_counter++;
+    return 1;
   }
 }
 
@@ -101,7 +102,7 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
       printf(CTPASS "Test %d Passed\n", all_counter);
     }
     passed_counter++;
-    return 1;
+    return 0;
 
   } else {
     if (verbose) {
@@ -110,6 +111,7 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
              all_counter);
     }
     failed_counter++;
+    return 1;
   }
 }
 
