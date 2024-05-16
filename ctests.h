@@ -117,7 +117,7 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
 int ct_stat(void) {
   printf(CTLOG);
   printf("Passed: %d/%d\t", passed_counter, all_counter);
-  printf("Failed: %d/%d\n", passed_counter, all_counter);
+  printf("Failed: %d/%d\n", failed_counter, all_counter);
 }
 
 #endif
