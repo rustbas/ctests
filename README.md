@@ -10,6 +10,3 @@ Just include the library with `define`:
 #include "path/to/ctests.h"
 ```
 
-# TODO
-
-- [ ] Implement levels of verbosity
