@@ -57,9 +57,8 @@ size_t failed_counter = 0;
 size_t skipped_counter = 0;
 
 int ct_assert_int(int a, int b, int verbose) {
-
+  all_counter++;
   if (a == b) {
-    all_counter++;
     if (verbose) {
       printf(CTPASS "Test %d Passed\n", all_counter);
     }
