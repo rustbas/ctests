@@ -66,13 +66,13 @@ int ct_assert_int(int a, int b, int verbose) {
   all_counter++;
   if (a == b) {
     if (verbose) {
-      printf(CTPASS "Test %d Passed\n", all_counter);
+      printf(CTPASS "Test %zu Passed\n", all_counter);
     }
     passed_counter++;
     return 0;
   } else {
     if (verbose) {
-      printf(CTFAIL "Test %d Failed: %d != %d"
+      printf(CTFAIL "Test %zu Failed: %d != %d"
                     "\n",
              all_counter, a, b);
     }
@@ -85,13 +85,13 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *), int verbose) {
   all_counter++;
   if (f(a, b)) {
     if (verbose) {
-      printf(CTPASS "Test %d Passed\n", all_counter);
+      printf(CTPASS "Test %zu Passed\n", all_counter);
     }
     passed_counter++;
     return 0;
   } else {
     if (verbose) {
-      printf(CTFAIL "Test %d Failed"
+      printf(CTFAIL "Test %zu Failed"
                     "\n",
              all_counter);
     }
@@ -104,14 +104,14 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
   all_counter++;
   if (fabs(a - b) < eps) {
     if (verbose) {
-      printf(CTPASS "Test %d Passed\n", all_counter);
+      printf(CTPASS "Test %zu Passed\n", all_counter);
     }
     passed_counter++;
     return 0;
 
   } else {
     if (verbose) {
-      printf(CTFAIL "Test %d Failed"
+      printf(CTFAIL "Test %zu Failed"
                     "\n",
              all_counter);
     }
@@ -122,8 +122,8 @@ int ct_assert_float(float a, float b, float eps, int verbose) {
 
 int ct_stat(void) {
   printf(CTLOG);
-  printf("Passed: %d/%d\t", passed_counter, all_counter);
-  printf("Failed: %d/%d\n", failed_counter, all_counter);
+  printf("Passed: %zu/%zu\t", passed_counter, all_counter);
+  printf("Failed: %zu/%zu\n", failed_counter, all_counter);
 }
 
 #endif
