@@ -2,7 +2,7 @@
 #define CTVERBOSE
 #include <stdio.h>
 
-#include "ctests.h"
+#include "ctests.c"
 // #include <math.h>
 
 int some_f(int a, int b) { return a + b; }
