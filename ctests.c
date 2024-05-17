@@ -124,6 +124,8 @@ int ct_stat(void) {
   printf(CTLOG);
   printf("Passed: %zu/%zu\t", passed_counter, all_counter);
   printf("Failed: %zu/%zu\n", failed_counter, all_counter);
+
+  return 0;
 }
 
 #endif
