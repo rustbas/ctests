@@ -1,6 +1,12 @@
 #ifndef _CTESTS
 #define _CTESTS
 
+// Dirty hack to make LSP in nvim work
+#ifndef CTESTS_IMPLEMENTATION
+#define CTESTS_IMPLEMENTATION
+#define CTESTS_IMPLEMENTATION_OPEN
+#endif
+
 #ifndef STDIO_H
 #define STDIO_H
 #include <stdio.h>
@@ -120,4 +126,10 @@ int ct_stat(void) {
   printf("Failed: %d/%d\n", failed_counter, all_counter);
 }
 
+#endif
+
+// End of dirty hack to make LSP in nvim work
+#ifdef CTESTS_IMPLEMENTATION_OPEN
+#undef CTESTS_IMPLEMENTATION_OPEN
+#undef CTESTS_IMPLEMENTATION
 #endif
