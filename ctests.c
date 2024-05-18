@@ -4,7 +4,7 @@
 // Dirty hack to make LSP in nvim work
 #ifndef CTESTS_IMPLEMENTATION
 #define CTESTS_IMPLEMENTATION
-#define CTESTS_IMPLEMENTATION_OPEN
+#define _CTESTS_IMPLEMENTATION
 #endif
 
 #ifndef STDIO_H
@@ -129,6 +129,6 @@ int ct_stat(void) {
 
 // End of dirty hack to make LSP in nvim work
 #ifdef CTESTS_IMPLEMENTATION_OPEN
-#undef CTESTS_IMPLEMENTATION_OPEN
+#undef _CTESTS_IMPLEMENTATION
 #undef CTESTS_IMPLEMENTATION
 #endif
