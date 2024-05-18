@@ -1,5 +1,5 @@
 #define CTESTS_IMPLEMENTATION
-#define CTVERBOSE
+
 #include <stdio.h>
 
 #include "ctests.c"
