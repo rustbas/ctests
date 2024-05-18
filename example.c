@@ -28,7 +28,7 @@ Point p3 = {.x = 2, .y = 1};
 
 int main() {
 
-  ct_verbose = 0;
+  ct_verbose = 1;
 
   ct_assert_int(sum(1, 2), 3);
   ct_assert_int(sum(1, 2), 3);
@@ -39,7 +39,8 @@ int main() {
   ct_assert_cmp(&p2, &p3, compare_point);
   ct_assert_cmp(&p1, &p3, compare_point);
   ct_assert_float(1.0, 1.0, 0.1);
-  ct_assert_float(2.0, 1.0, 0.1);
+  ct_assert_float(3.0, 1.0, 0.1);
+
   ct_stat();
 
   printf("hello, %s\n", compare_point(&p1, &p3) ? "true" : "false");

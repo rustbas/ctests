@@ -39,6 +39,9 @@
 // HEADERS //
 /////////////
 
+// 0 - no verbose
+// 1 - only FAIL
+// 2 - all verbose
 int ct_verbose = 0;
 
 int ct_assert_int(int a, int b);
@@ -62,17 +65,17 @@ size_t ct_skipped_counter = 0;
 int ct_assert_int(int a, int b) {
   ct_all_counter++;
   if (a == b) {
-    if (ct_verbose) {
+    if (ct_verbose == 2)
       printf(CTPASS "Test %zu Passed\n", ct_all_counter);
-    }
+
     ct_passed_counter++;
     return 0;
   } else {
-    if (ct_verbose) {
+    if (ct_verbose > 0)
       printf(CTFAIL "Test %zu Failed: %d != %d"
                     "\n",
              ct_all_counter, a, b);
-    }
+
     ct_failed_counter++;
     return 1;
   }
@@ -81,17 +84,17 @@ int ct_assert_int(int a, int b) {
 int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *)) {
   ct_all_counter++;
   if (f(a, b)) {
-    if (ct_verbose) {
+    if (ct_verbose == 2) {
       printf(CTPASS "Test %zu Passed\n", ct_all_counter);
     }
     ct_passed_counter++;
     return 0;
   } else {
-    if (ct_verbose) {
+    if (ct_verbose > 0)
       printf(CTFAIL "Test %zu Failed"
                     "\n",
              ct_all_counter);
-    }
+
     ct_failed_counter++;
     return 1;
   }
@@ -100,18 +103,18 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *)) {
 int ct_assert_float(float a, float b, float eps) {
   ct_all_counter++;
   if (fabs(a - b) < eps) {
-    if (ct_verbose) {
+    if (ct_verbose == 2)
       printf(CTPASS "Test %zu Passed\n", ct_all_counter);
-    }
+
     ct_passed_counter++;
     return 0;
 
   } else {
-    if (ct_verbose) {
+    if (ct_verbose > 0)
       printf(CTFAIL "Test %zu Failed"
                     "\n",
              ct_all_counter);
-    }
+
     ct_failed_counter++;
     return 1;
   }
