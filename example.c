@@ -5,7 +5,7 @@
 #include "ctests.c"
 // #include <math.h>
 
-int some_f(int a, int b) { return a + b; }
+int sum(int a, int b) { return a + b; }
 
 typedef struct {
   int x, y;
@@ -28,21 +28,21 @@ Point p3 = {.x = 2, .y = 1};
 
 int main() {
 
-  int verbose = 1;
+  ct_verbose = 0;
 
-  CT_ASSERT_INT(some_f(1, 2), 3);
-  CT_ASSERT_INT(some_f(2, 2), 3);
-  CT_ASSERT_INT(some_f(3, 2), 5);
-  CT_ASSERT_INT(some_f(2, 3), 5);
-  CT_ASSERT_INT(some_f(3, 3), 6);
-  CT_ASSERT_CMP(&p2, &p3, compare_point);
-  CT_ASSERT_CMP(&p1, &p3, compare_point);
-  CT_ASSERT_FLT(1.0, 1.0, 0.1);
-  CT_ASSERT_FLT(2.0, 1.0, 0.1);
+  ct_assert_int(sum(1, 2), 3);
+  ct_assert_int(sum(1, 2), 3);
+  ct_assert_int(sum(2, 2), 3);
+  ct_assert_int(sum(3, 2), 5);
+  ct_assert_int(sum(2, 3), 5);
+  ct_assert_int(sum(3, 3), 6);
+  ct_assert_cmp(&p2, &p3, compare_point);
+  ct_assert_cmp(&p1, &p3, compare_point);
+  ct_assert_float(1.0, 1.0, 0.1);
+  ct_assert_float(2.0, 1.0, 0.1);
+  ct_stat();
 
-  CT_STAT();
-
-  printf("Hello, %s\n", compare_point(&p1, &p3) ? "true" : "false");
+  printf("hello, %s\n", compare_point(&p1, &p3) ? "true" : "false");
 
   return 0;
 }
