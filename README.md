@@ -24,9 +24,9 @@ There are several functions to testing functions.
 ## Variables
 
 1. `int ct_verbose` -- level of verbosity. Default value is 0.
-    1.`0` - no verbose;
-    2.`1` - show only fails;
-    3.`2` - all verbose;
+    1. `0` - no verbose;
+    2. `1` - show only fails;
+    3. `2` - all verbose;
 2. `size_t ct_all_counter` -- number of tests. Increase in each test.
 3. `size_t ct_passed_counter` -- number of passed tests.
 4. `size_t ct_failed_counter` -- number of failed tests.
