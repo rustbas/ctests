@@ -47,6 +47,7 @@ int ct_verbose = 0;
 int ct_assert_int(int a, int b);
 int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *));
 int ct_assert_float(float a, float b, float eps);
+int ct_assert_double(double a, double b, double eps);
 int ct_stat(void);
 
 #endif
@@ -101,6 +102,26 @@ int ct_assert_cmp(void *a, void *b, int (*f)(void *, void *)) {
 }
 
 int ct_assert_float(float a, float b, float eps) {
+  ct_all_counter++;
+  if (fabs(a - b) < eps) {
+    if (ct_verbose == 2)
+      printf(CTPASS "Test %zu Passed\n", ct_all_counter);
+
+    ct_passed_counter++;
+    return 0;
+
+  } else {
+    if (ct_verbose > 0)
+      printf(CTFAIL "Test %zu Failed"
+                    "\n",
+             ct_all_counter);
+
+    ct_failed_counter++;
+    return 1;
+  }
+}
+
+int ct_assert_double(double a, double b, double eps) {
   ct_all_counter++;
   if (fabs(a - b) < eps) {
     if (ct_verbose == 2)
